@@ -1,0 +1,14 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "d2b55bf8-5ead-4db1-bb89-1be9144e6e48"
+  Name: "Matte"
+  Author: "Howetuft"
+AppearanceModels:
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Diffuse"
+    UseObjectColor: "true"
+  Render Diffuse:
+    UUID: "c19b2d30-c55b-48aa-a938-df9e2f7779cf"
+    Render.Diffuse.Color.Object: "true"

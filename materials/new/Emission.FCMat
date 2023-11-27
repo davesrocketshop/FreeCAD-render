@@ -1,0 +1,24 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "d62b7901-3f95-4859-83cc-ce9a70aa4c04"
+  Name: "Emission"
+  Author: "General name"
+AppearanceModels:
+  ArchitecturalRendering:
+    UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"
+    Color: "(1.0, 1.0, 1.0)"
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    DiffuseColor: "(1.0, 1.0, 1.0)"
+    Transparency: "0"
+  Vector Rendering:
+    UUID: "fdf5a80e-de50-4157-b2e5-b6e5f88b680e"
+    SectionColor: "(1.0, 1.0, 1.0)"
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Emission"
+  Render Emission:
+    UUID: "9f6cb588-c89d-4a74-9d0f-2786a8568cec"
+    Render.Emission.Color: "(1.0, 1.0, 1.0)"
+    Render.Emission.Power: "60"

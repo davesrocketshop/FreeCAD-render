@@ -1,0 +1,30 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "0bc5368b-790d-4f7e-b5e0-a82b2241de7f"
+  Name: "GreenMarble"
+  Author: "Howetuft"
+AppearanceModels:
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Substance_PBR"
+    UseObjectColor: "false"
+  Render Substance_PBR:
+    UUID: "f212b643-db96-452e-8428-376a4534e5ab"
+    Render.Substance_PBR.BaseColor: "(0.5,0.5,0.5)"
+    Render.Substance_PBR.BaseColor.Texture: "Texture('GreenMarble', 0)"
+    Render.Substance_PBR.Bump: "Texture('GreenMarble', 3, 0.001)"
+    Render.Substance_PBR.Metallic: "0.2"
+    Render.Substance_PBR.Normal: "Texture('GreenMarble', 2, 0.001)"
+    Render.Substance_PBR.Roughness: "0.5"
+    Render.Substance_PBR.Roughness.Texture: "Texture('GreenMarble',1)"
+    Render.Substance_PBR.Specular: "0"
+  Render Texture:
+    UUID: "fc9b6135-95cd-4ba8-ad9a-0972caeebad2"
+    Render.Textures.Images:
+      - "GreenMarble/Marble009_1K_Color_Light.jpg"
+      - "GreenMarble/Marble009_1K_Roughness.jpg"
+      - "GreenMarble/Marble009_1K_NormalGL.jpg"
+      - "GreenMarble/Marble009_1K_Displacement.jpg"
+    Render.Textures.Name: "GreenMarble"
+    Render.Textures.Scale: "1"

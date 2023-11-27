@@ -1,0 +1,14 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "80765c0a-6a5c-4126-9162-62220cd10630"
+  Name: "Carpaint"
+  Author: "Howetuft"
+AppearanceModels:
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Carpaint"
+    UseObjectColor: "true"
+  Render Carpaint:
+    UUID: "4d2cc163-0707-40e2-a9f7-14288c4b97bd"
+    Render.Carpaint.BaseColor.Object: "true"

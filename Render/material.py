@@ -44,7 +44,7 @@ from ArchMaterial import (
 
 from Render.texture import Texture
 from Render.taskpanels import MaterialTaskPanel, MaterialSettingsTaskPanel
-from Render.constants import FCDVERSION, PARAMS, WBMATERIALDIR, ICONDIR
+from Render.constants import FCDVERSION, PARAMS, WBMATERIALDIR, WBNEWMATERIALDIR, WBMODELDIR, ICONDIR
 from Render.utils import translate, warn
 
 
@@ -690,5 +690,7 @@ class _TextureImportHelper:
 mat_param = App.ParamGet(
     "User parameter:BaseApp/Preferences/Mod/Material/Resources/Modules/Render"
 )
+# mat_param.SetString("ModuleDir", WBNEWMATERIALDIR)
 mat_param.SetString("ModuleDir", WBMATERIALDIR)
+mat_param.SetString("ModuleModelDir", WBMODELDIR)
 mat_param.SetString("ModuleIcon", os.path.join(ICONDIR, "Render.svg"))

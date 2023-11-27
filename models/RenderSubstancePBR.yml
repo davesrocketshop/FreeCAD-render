@@ -1,6 +1,7 @@
+---
 # ***************************************************************************
 # *                                                                         *
-# *   Copyright (c) 2021 Howetuft <howetuft@gmail.com>                      *
+# *   Copyright (c) 2023 David Carter <dcarter@davidcarter.ca>              *
 # *                                                                         *
 # *   This program is free software; you can redistribute it and/or modify  *
 # *   it under the terms of the GNU Lesser General Public License (LGPL)    *
@@ -20,43 +21,64 @@
 # *                                                                         *
 # ***************************************************************************
 
-"""This module implements constants for Render workbench."""
-
-import os
-import re
-
-import FreeCAD as App
-
-# Paths
-PKGDIR = os.path.dirname(__file__)  # Package directory (=this file directory)
-WBDIR = os.path.dirname(PKGDIR)  # Workbench root directory
-RDRDIR = os.path.join(PKGDIR, "renderers")
-ICONDIR = os.path.join(PKGDIR, "resources", "icons")
-TEMPLATEDIR = os.path.join(WBDIR, "templates")
-WBMATERIALDIR = os.path.realpath(os.path.join(WBDIR, "materials/old"))
-WBNEWMATERIALDIR = os.path.realpath(os.path.join(WBDIR, "materials/new"))
-WBMODELDIR = os.path.realpath(os.path.join(WBDIR, "models"))
-FCDMATERIALDIR = os.path.join(
-    App.getResourceDir(), "Mod", "Material", "StandardMaterial"
-)
-USERMATERIALDIR = os.path.join(App.ConfigGet("UserAppData"), "Materials")
-TRANSDIR = os.path.join(PKGDIR, "resources", "translations")
-PREFPAGE = os.path.join(PKGDIR, "resources", "ui", "RenderSettings.ui")
-TASKPAGE = os.path.join(PKGDIR, "resources", "ui", "RenderMaterial.ui")
-
-# Renderers lists
-RENDERERS = {
-    x.group(1)
-    for x in map(lambda x: re.match(r"^([A-Z].*)\.py$", x), os.listdir(RDRDIR))
-    if x
-}
-DEPRECATED_RENDERERS = {"Luxrender"}
-VALID_RENDERERS = sorted(RENDERERS - DEPRECATED_RENDERERS)
-
-# FreeCAD version
-FCDVERSION = int(App.Version()[0]), float(App.Version()[1])
-
-# Workbench parameters
-PARAMS = App.ParamGet("User parameter:BaseApp/Preferences/Mod/Render")
-
-MAX_FILENAME_LEN = 256
+AppearanceModel:
+  Name: "Render Substance_PBR"
+  UUID: 'f212b643-db96-452e-8428-376a4534e5ab'
+  URL: ''
+  Description: "Rendering Workbench Substance_PBR rendering model"
+  DOI: ""
+  Render.Substance_PBR.BaseColor:
+    Type: 'Color'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.BaseColor.Texture:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.BaseColor.Object:
+    Type: 'Boolean'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Bump:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Metallic:
+    Type: 'Float'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Metallic.Texture:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Normal:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Roughness:
+    Type: 'Float'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Roughness.Texture:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Specular:
+    Type: 'Float'
+    Units: ''
+    URL: ''
+    Description: " "
+  Render.Substance_PBR.Specular.Texture:
+    Type: 'String'
+    Units: ''
+    URL: ''
+    Description: " "

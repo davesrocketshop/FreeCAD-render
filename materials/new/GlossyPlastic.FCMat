@@ -1,0 +1,38 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "23f5b24a-2f3f-4e71-8c50-c8be1d9d1192"
+  Name: "GlossyPlastic"
+  Author: "Howetuft"
+AppearanceModels:
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Disney"
+    UseObjectColor: "true"
+  Render Disney:
+    UUID: "f8723572-4470-4c39-a749-6d3b71358a5b"
+    Render.Disney.Anisotropic: "0"
+    Render.Disney.ClearCoat: "0"
+    Render.Disney.ClearCoatGloss: "0"
+    Render.Disney.Metallic: "0"
+    Render.Disney.Roughness: "0.1"
+    Render.Disney.Sheen: "0"
+    Render.Disney.SheenTint: "0"
+    Render.Disney.Specular: "0.5"
+    Render.Disney.SpecularTint: "0"
+    Render.Disney.Subsurface: "0"
+  Render Ospray:
+    UUID: "a4792c23-0be9-47c2-b16d-47b2d2d5efd6"
+    Render.Ospray: >2
+      # use coat instead of specular
+      type principled
+      baseColor %RED% %GREEN% %BLUE%
+      roughness 0.4
+      coat 0.8
+      coatRoughness 0.1
+  Render Pbrt:
+    UUID: "35b34b82-4325-4d27-97bd-d10bb2c56586"
+    Render.Pbrt: >2
+      Material "coateddiffuse"
+        "rgb reflectance" [ %RED% %GREEN% %BLUE% ]
+        "float roughness" [ 0.1 ]

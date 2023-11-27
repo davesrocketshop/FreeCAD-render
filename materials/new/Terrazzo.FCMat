@@ -1,0 +1,30 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "ac91b233-a115-4548-9018-c628d9b444b8"
+  Name: "Terrazzo"
+  Author: "Howetuft"
+AppearanceModels:
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Substance_PBR"
+    UseObjectColor: "false"
+  Render Substance_PBR:
+    UUID: "f212b643-db96-452e-8428-376a4534e5ab"
+    Render.Substance_PBR.BaseColor: "(0.5,0.5,0.5)"
+    Render.Substance_PBR.BaseColor.Texture: "Texture('Terrazzo', 0)"
+    Render.Substance_PBR.Bump: "Texture('Terrazzo', 3, 0.001)"
+    Render.Substance_PBR.Metallic: "0.3"
+    Render.Substance_PBR.Normal: "Texture('Terrazzo', 2, 0.001)"
+    Render.Substance_PBR.Roughness: "0.5"
+    Render.Substance_PBR.Roughness.Texture: "Texture('Terrazzo',1)"
+    Render.Substance_PBR.Specular: "0.1"
+  Render Texture:
+    UUID: "fc9b6135-95cd-4ba8-ad9a-0972caeebad2"
+    Render.Textures.Images:
+      - "Terrazzo019/Terrazzo019M_1K_Color_Light.jpg"
+      - "Terrazzo019/Terrazzo019M_1K_Roughness.jpg"
+      - "Terrazzo019/Terrazzo019M_1K_NormalGL.jpg"
+      - "Terrazzo019/Terrazzo019M_1K_Displacement.jpg"
+    Render.Textures.Name: "Terrazzo"
+    Render.Textures.Scale: "0.2"

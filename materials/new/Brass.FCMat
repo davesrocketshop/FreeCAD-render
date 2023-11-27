@@ -1,0 +1,59 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "6ff83328-89fa-4114-a41d-e7642292c840"
+  Name: "Brass"
+  Author: "Howetuft"
+AppearanceModels:
+  ArchitecturalRendering:
+    UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"
+    Color: "(0.96, 0.89, 0.68)"
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    DiffuseColor: "(0.96, 0.89, 0.68)"
+  Vector Rendering:
+    UUID: "fdf5a80e-de50-4157-b2e5-b6e5f88b680e"
+    SectionColor: "(0.96, 0.89, 0.68)"
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Disney"
+  Render Disney:
+    UUID: "f8723572-4470-4c39-a749-6d3b71358a5b"
+    Render.Disney.Anisotropic: "0"
+    Render.Disney.BaseColor: "(0.96, 0.89, 0.68)"
+    Render.Disney.ClearCoat: "0"
+    Render.Disney.ClearCoatGloss: "0"
+    Render.Disney.Metallic: "1"
+    Render.Disney.Roughness: "0.3"
+    Render.Disney.Sheen: "0"
+    Render.Disney.SheenTint: "0"
+    Render.Disney.Specular: "0"
+    Render.Disney.SpecularTint: "0"
+    Render.Disney.Subsurface: "0"
+  Render Ospray:
+    UUID: "a4792c23-0be9-47c2-b16d-47b2d2d5efd6"
+    Render.Ospray: >2
+      type metal
+      # from refractiveindex.info, for wl 700, 550, 450
+      eta 0.44600 0.52700 1.0940
+      k 4.1060 2.7650 1.8290
+      roughness 0.1
+  Render Pbrt:
+    UUID: "35b34b82-4325-4d27-97bd-d10bb2c56586"
+    Render.Pbrt: >2
+      Material "conductor"
+      "spectrum eta" [ "metal-CuZn-eta" ]
+      "spectrum k" [ "metal-CuZn-k" ]
+      "float roughness" [ 0.01 ]
+  Render Povray:
+    UUID: "6ec8b415-4c7b-4206-a80b-2ea64101f34b"
+    Render.Povray: >2
+      finish {
+          brilliance 4
+          diffuse 0
+          ambient <0.96 0.89 0.68>
+          reflection <0.96 0.89 0.68>
+          metallic 1
+          specular 0.60
+          roughness 1/20
+      }

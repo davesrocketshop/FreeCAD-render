@@ -1,0 +1,24 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "f9bd5b5e-3ea5-4151-8b50-70f4833b6950"
+  Name: "Glass"
+  Author: "Howetuft"
+AppearanceModels:
+  ArchitecturalRendering:
+    UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"
+    Color: "(0.8, 0.8, 0.8)"
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    DiffuseColor: "(0.8, 0.8, 0.8)"
+    Transparency: "100"
+  Vector Rendering:
+    UUID: "fdf5a80e-de50-4157-b2e5-b6e5f88b680e"
+    SectionColor: "(0.8, 0.8, 0.8)"
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Glass"
+  Render Glass:
+    UUID: "d76a56f5-7250-4efb-bb89-8ea0a9ccaa6b"
+    Render.Glass.Color: "(1.0, 1.0, 1.0)"
+    Render.Glass.IOR: "1.5"

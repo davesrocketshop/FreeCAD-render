@@ -1,0 +1,98 @@
+﻿---
+# File created by FreeCAD 0.22.0 Revision: 34878 +20 (Git)
+General:
+  UUID: "0778ab2b-a8f4-47ef-9513-bffb35f16286"
+  Name: "Aluminium"
+  Author: "Howetuft"
+AppearanceModels:
+  ArchitecturalRendering:
+    UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"
+    Color: "(0.96, 0.96, 0.96)"
+  Basic Rendering:
+    UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
+    DiffuseColor: "(0.96, 0.96, 0.97)"
+  Vector Rendering:
+    UUID: "fdf5a80e-de50-4157-b2e5-b6e5f88b680e"
+    SectionColor: "(0.96, 0.96, 0.97)"
+  Render Workbench:
+    UUID: "344008be-a837-43af-90bc-f795f277b309"
+    Render.Type: "Disney"
+  Render Disney:
+    UUID: "f8723572-4470-4c39-a749-6d3b71358a5b"
+    Render.Disney.Anisotropic: "0"
+    Render.Disney.BaseColor: "(0.96, 0.96, 0.97)"
+    Render.Disney.ClearCoat: "0"
+    Render.Disney.ClearCoatGloss: "0"
+    Render.Disney.Metallic: "1"
+    Render.Disney.Roughness: "0.3"
+    Render.Disney.Sheen: "0"
+    Render.Disney.SheenTint: "0"
+    Render.Disney.Specular: "0"
+    Render.Disney.SpecularTint: "0"
+    Render.Disney.Subsurface: "0"
+  Render Luxcore:
+    UUID: "6b992304-33e0-490b-a391-e9d0af79bb69"
+    Render.Luxcore: >2
+      scene.textures.%NAME%.type = fresnelpreset
+      scene.textures.%NAME%.name = aluminium
+      scene.materials.%NAME%.type = metal2
+      scene.materials.%NAME%.fresnel = %NAME%
+  Render Ospray:
+    UUID: "a4792c23-0be9-47c2-b16d-47b2d2d5efd6"
+    Render.Ospray: >2
+      # https://refractiveindex.info/
+      type metal
+      eta 1.5 0.98 0.6
+      k 7.6 6.6 5.4
+      roughness 0.1
+  Render Pbrt:
+    UUID: "35b34b82-4325-4d27-97bd-d10bb2c56586"
+    Render.Pbrt: >2
+      Material "conductor"
+      "spectrum eta" [
+      304.994 0.38
+      309.95 0.34
+      312.292 0.287
+      334.178 0.089
+      364.647 0.052
+      405.163 0.041
+      420.271 0.041
+      439.64502 0.043
+      469.621 0.043
+      506.04102 0.046
+      546.167 0.049
+      598.937 0.053
+      662.99506 0.05
+      751.394 0.044
+      860.972 0.04
+      ]
+      "spectrum k" [
+      304.994 0.07
+      309.95 0.08
+      312.292 0.091
+      334.178 0.288
+      364.647 0.549
+      405.163 0.799
+      420.271 0.898
+      439.64502 1.02
+      469.621 1.14
+      506.04102 1.28
+      546.167 1.43
+      598.937 1.62
+      662.99506 1.84
+      751.394 2.19
+      860.972 2.56
+      ]
+      "float roughness" [ 0.01 ]
+  Render Povray:
+    UUID: "6ec8b415-4c7b-4206-a80b-2ea64101f34b"
+    Render.Povray: >2
+      finish {
+          brilliance 4
+          diffuse 0
+          ambient <0.96, 0.96, 0.97>
+          reflection <0.96, 0.96, 0.97>
+          metallic 1
+          specular 0.60
+          roughness 1/20
+      }
