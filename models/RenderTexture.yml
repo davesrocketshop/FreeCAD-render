@@ -33,7 +33,7 @@ AppearanceModel:
     URL: ''
     Description: " "
   Render.Textures.Images:
-    Type: 'FileList'
+    Type: 'ImageList'
     Units: ''
     URL: ''
     Description: " "
