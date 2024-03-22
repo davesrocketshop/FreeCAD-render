@@ -43,6 +43,7 @@ USERMATERIALDIR = os.path.join(App.ConfigGet("UserAppData"), "Materials")
 TRANSDIR = os.path.join(PKGDIR, "resources", "translations")
 PREFPAGE = os.path.join(PKGDIR, "resources", "ui", "RenderSettings.ui")
 TASKPAGE = os.path.join(PKGDIR, "resources", "ui", "RenderMaterial.ui")
+MATERIALPAGE = os.path.join(PKGDIR, "resources", "ui", "MaterialTask.ui")
 
 # Renderers lists
 RENDERERS = {

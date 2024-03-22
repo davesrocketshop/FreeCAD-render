@@ -68,10 +68,13 @@ import FreeCADGui as Gui
 from ArchMaterial import _ArchMaterialTaskPanel
 
 from Render.constants import (
+    FCDVERSION,
     TASKPAGE,
+    MATERIALPAGE,
     VALID_RENDERERS,
     ICONDIR,
     WBMATERIALDIR,
+    WBNEWMATERIALDIR,
     FCDMATERIALDIR,
     USERMATERIALDIR,
 )
@@ -83,6 +86,9 @@ from Render.rendermaterial import (
     passthrough_keys,
 )
 from Render.texture import str2imageid, str2imageid_ext
+
+if FCDVERSION >= (0, 22):
+    import MatGui
 
 
 class ColorPicker(QPushButton):
@@ -948,6 +954,55 @@ please edit 'Render settings' from material context menu.*"""
 
         # Import textures (and remove texture data from self.material)
         self.material = self.obj.Proxy.import_textures(self.material, path)
+
+        # Update material (relying on base class)
+        super().accept()
+        return True
+
+    def reject(self):
+        """Respond to user rejection."""
+        return True
+
+
+class MaterialTaskPanelPost22:
+    """Task panel to create and edit Material.
+
+    Essentially derived from Arch Material Task Panel, except for
+    material cards directory.
+    """
+
+    def __init__(self, obj=None):
+        self.obj = obj
+        self.form = Gui.PySideUic.loadUi(MATERIALPAGE)
+
+        self.form.setWindowTitle("Render Material")
+
+        # Disable color buttons (error-prone) and replace with message
+        msg = """\
+*Nota: If you want to set color or other aspect parameters of the material, \
+please edit 'Render settings' from material context menu.*"""
+        label = QLabel(msg)
+        label.setWordWrap(True)
+        label.setTextFormat(Qt.TextFormat.MarkdownText)
+        self.form.layout().addWidget(label)
+
+    def accept(self):
+        """Respond to user acceptation.
+
+        Import the selected card into the underlying material, including
+        textures.
+        """
+        # # Get card file path (directory)
+        # card = self.form.comboBox_MaterialsInDir.currentText()
+        # try:
+        #     path = self.cards[card]
+        # except KeyError:
+        #     path = None
+        # else:
+        #     path = os.path.dirname(path)
+
+        # # Import textures (and remove texture data from self.material)
+        # self.material = self.obj.Proxy.import_textures(self.material, path)
 
         # Update material (relying on base class)
         super().accept()

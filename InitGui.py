@@ -94,6 +94,14 @@ static char * Render_xpm[] = {
 "                "};
 """
 
+    def _loadMaterialModule(self):
+        # load the FEM module
+        import Materials
+        import MatGui
+        # dummy usage to get flake8 and lgtm quiet
+        False if Materials.__name__ else True
+        False if MatGui.__name__ else True
+
     def Initialize(self):
         """Initialize GUI when the workbench is first loaded (callback).
 
@@ -105,6 +113,10 @@ static char * Render_xpm[] = {
         from FreeCAD import Console
         from FreeCADGui import addIconPath, addPreferencePage, addLanguagePath
         from Render import RENDER_COMMANDS, TRANSDIR, ICONDIR, PreferencesPage
+
+        from Render.constants import FCDVERSION
+        if FCDVERSION >= (0, 22):
+            self._loadMaterialModule()
 
         addLanguagePath(TRANSDIR)
         self.appendToolbar(

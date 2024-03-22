@@ -43,8 +43,8 @@ from ArchMaterial import (
 )
 
 from Render.texture import Texture
-from Render.taskpanels import MaterialTaskPanel, MaterialSettingsTaskPanel
-from Render.constants import FCDVERSION, PARAMS, WBMATERIALDIR, WBNEWMATERIALDIR, WBMODELDIR, ICONDIR
+from Render.taskpanels import MaterialTaskPanel, MaterialTaskPanelPost22, MaterialSettingsTaskPanel
+from Render.constants import FCDVERSION, PARAMS, WBMATERIALDIR, WBNEWMATERIALDIR, ICONDIR
 from Render.utils import translate, warn
 
 
@@ -245,7 +245,10 @@ class ViewProviderMaterial(_ViewProviderArchMaterial):
         self.__module__ = "Render"
 
     def setEdit(self, vobj, mode):
-        self.taskd = MaterialTaskPanel(vobj.Object)
+        if FCDVERSION >= (0, 22):
+            self.taskd = MaterialTaskPanelPost22(vobj.Object)
+        else:
+            self.taskd = MaterialTaskPanel(vobj.Object)
         Gui.Control.showDialog(self.taskd)
         self.taskd.form.FieldName.setFocus()
         self.taskd.form.FieldName.selectAll()
@@ -690,7 +693,8 @@ class _TextureImportHelper:
 mat_param = App.ParamGet(
     "User parameter:BaseApp/Preferences/Mod/Material/Resources/Modules/Render"
 )
-# mat_param.SetString("ModuleDir", WBNEWMATERIALDIR)
-mat_param.SetString("ModuleDir", WBMATERIALDIR)
-mat_param.SetString("ModuleModelDir", WBMODELDIR)
+if FCDVERSION < (0, 22):
+    mat_param.SetString("ModuleDir", WBMATERIALDIR)
+else:
+    mat_param.SetString("ModuleDir", WBNEWMATERIALDIR)
 mat_param.SetString("ModuleIcon", os.path.join(ICONDIR, "Render.svg"))
