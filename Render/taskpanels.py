@@ -88,6 +88,7 @@ from Render.rendermaterial import (
 from Render.texture import str2imageid, str2imageid_ext
 
 if FCDVERSION >= (0, 22):
+    import Materials
     import MatGui
 
 
@@ -974,8 +975,18 @@ class MaterialTaskPanelPost22:
     def __init__(self, obj=None):
         self.obj = obj
         self.form = Gui.PySideUic.loadUi(MATERIALPAGE)
+        # self.materialWidget = MatGui.MaterialTreeWidget()
+        self.materialWidget = MatGui.MaterialTreeWidget(self.form.widgetMaterialTree)
+        # print(dir(self.form.widgetMaterialTree))
+        # print(type(self.materialWidget.henry))
+        # self.materialWidget = self.form.widgetMaterialTree.property("pyWidget")
+        # print(self.materialWidget)
+        # self.form.layout().replaceWidget(self.form.widgetMaterialTree, self.materialWidget.widget)
+        self.uuids = Materials.UUIDs()
 
-        self.form.setWindowTitle("Render Material")
+        self.form.setWindowTitle(QT_TRANSLATE_NOOP("Render", "Render Material"))
+        self.setFilters()
+
 
         # Disable color buttons (error-prone) and replace with message
         msg = """\
@@ -985,6 +996,112 @@ please edit 'Render settings' from material context menu.*"""
         label.setWordWrap(True)
         label.setTextFormat(Qt.TextFormat.MarkdownText)
         self.form.layout().addWidget(label)
+
+        self.form.widgetMaterialTree.onMaterial.connect(
+            self.onMaterial
+        )
+    
+    def setFilters(self):
+        filterList = []
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "All Render Materials")
+        filter.RequiredModels = [self.uuids.RenderWB]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Appleseed")
+        filter.RequiredModels = [self.uuids.RenderAppleseed]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Carpaint")
+        filter.RequiredModels = [self.uuids.RenderCarpaint]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Cycles")
+        filter.RequiredModels = [self.uuids.RenderCycles]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Diffuse")
+        filter.RequiredModels = [self.uuids.RenderDiffuse]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Disney")
+        filter.RequiredModels = [self.uuids.RenderDisney]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Emission")
+        filter.RequiredModels = [self.uuids.RenderEmission]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Glasss")
+        filter.RequiredModels = [self.uuids.RenderGlass]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Luxcore")
+        filter.RequiredModels = [self.uuids.RenderLuxcore]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Luxrender")
+        filter.RequiredModels = [self.uuids.RenderLuxrender]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Mixed")
+        filter.RequiredModels = [self.uuids.RenderMixed]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Ospray")
+        filter.RequiredModels = [self.uuids.RenderOspray]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "PBRT")
+        filter.RequiredModels = [self.uuids.RenderPbrt]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Povray")
+        filter.RequiredModels = [self.uuids.RenderPovray]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Substance PBR")
+        filter.RequiredModels = [self.uuids.RenderSubstancePBR]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "Texture")
+        filter.RequiredModels = [self.uuids.RenderTexture]
+        filterList.append(filter)
+
+        filter = Materials.MaterialFilter()
+        filter.Name = QT_TRANSLATE_NOOP("Render", "All Materials")
+        filterList.append(filter)
+
+        self.materialWidget.setFilter(filterList)
+        self.materialWidget.selectFilter(QT_TRANSLATE_NOOP("Render", "All Render Materials"))
+
+        # Set viewing options
+        param = App.ParamGet("User parameter:BaseApp/Preferences/Mod/Material/TreeWidget")
+        self.materialWidget.IncludeFavorites = param.GetBool("ShowFavorites", True)
+        self.materialWidget.IncludeRecent = param.GetBool("ShowRecent", True)
+        self.materialWidget.IncludeEmptyFolders = param.GetBool("ShowEmptyFolders", True)
+        self.materialWidget.IncludeEmptyLibraries = param.GetBool("ShowEmptyLibraries", False)
+        self.materialWidget.IncludeLegacy = param.GetBool("ShowLegacy", False)
+
+    def onMaterial(self, uuid):
+        print("UUID: {0}\n".format(uuid))
+
 
     def accept(self):
         """Respond to user acceptation.
@@ -1005,7 +1122,7 @@ please edit 'Render settings' from material context menu.*"""
         # self.material = self.obj.Proxy.import_textures(self.material, path)
 
         # Update material (relying on base class)
-        super().accept()
+        print(self.form.widgetMaterialTree.property("materialUuid"))
         return True
 
     def reject(self):
