@@ -32,7 +32,7 @@ from PySide.QtGui import QMessageBox, QInputDialog, QApplication, QCursor
 
 import FreeCAD as App
 import FreeCADGui as Gui
-from ArchMaterial import _CommandArchMaterial
+from bimcommands.BimMaterial import Arch_Material
 
 from Render.constants import ICONDIR, VALID_RENDERERS
 from Render.utils import translate
@@ -313,7 +313,7 @@ class DistantLightCommand:
         DistantLight.create()
 
 
-class MaterialCreatorCommand(_CommandArchMaterial):
+class MaterialCreatorCommand(Arch_Material):
     """GUI command to create a material.
 
     This class is partially based on Arch 'ArchMaterial' command.

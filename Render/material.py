@@ -36,11 +36,8 @@ import FreeCADGui as Gui
 from PySide.QtGui import QAction
 from PySide.QtCore import QObject, SIGNAL, QT_TRANSLATE_NOOP
 
-from ArchMaterial import (
-    _ArchMaterial,
-    _ViewProviderArchMaterial,
-    getMaterialContainer,
-)
+from Arch import getMaterialContainer
+from ArchMaterial import _ArchMaterial, _ViewProviderArchMaterial
 
 from Render.texture import Texture
 from Render.taskpanels import MaterialTaskPanel, MaterialTaskPanelPost22, MaterialSettingsTaskPanel
