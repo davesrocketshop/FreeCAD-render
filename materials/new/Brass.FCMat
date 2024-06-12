@@ -4,6 +4,9 @@ General:
   UUID: "6ff83328-89fa-4114-a41d-e7642292c840"
   Name: "Brass"
   Author: "Howetuft"
+Inherits:
+  Brass:
+    UUID: "4151e19c-fd6a-4ca4-83d4-d5e17d76cb9c"
 AppearanceModels:
   ArchitecturalRendering:
     UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"

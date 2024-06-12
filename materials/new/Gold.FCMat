@@ -4,6 +4,9 @@ General:
   UUID: "87e0e337-0a8d-4ad0-814e-7b977e3ac070"
   Name: "Gold"
   Author: "Howetuft"
+Inherits:
+  Gold:
+    UUID: "85257e2c-be3f-40a1-b03f-0bd4ba58ca08"
 AppearanceModels:
   ArchitecturalRendering:
     UUID: "27e48ac9-54e1-4a1f-aa49-d5d690242705"

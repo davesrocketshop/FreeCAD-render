@@ -12,6 +12,10 @@ AppearanceModels:
     UUID: "f006c7e4-35b7-43d5-bbf9-c5d572309e6e"
     DiffuseColor: "(0.8, 0.8, 0.8)"
     Transparency: "100"
+    AmbientColor: "(0.3000, 0.2306, 0.0953, 1.0)"
+    EmissiveColor: "(0.0000, 0.0000, 0.0000, 1.0)"
+    Shininess: "0.0625"
+    SpecularColor: "(0.9000, 0.8820, 0.7020, 1.0)"
   Vector Rendering:
     UUID: "fdf5a80e-de50-4157-b2e5-b6e5f88b680e"
     SectionColor: "(0.8, 0.8, 0.8)"
